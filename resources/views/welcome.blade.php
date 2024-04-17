@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <link rel="shortcut icon" href="{{url('/red-panda.svg')}}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
