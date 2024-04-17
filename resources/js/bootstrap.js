@@ -4,5 +4,7 @@ import Alpine from 'alpinejs'
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.Alpine = Alpine
-Alpine.start()
+if( ! window.Alpine ) {
+    window.Alpine = Alpine
+    Alpine.start()
+}
