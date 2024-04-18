@@ -23,13 +23,15 @@
             {{ $this->product->description }}
         </div>
         <div class="mt-4 space-y-4">
-            <select name="" id="" class="block w-full rounded-md border-0 py-1.15 pl-3 pr-10 text-slate-800 dark:bg-slate-200">
+            <select wire:model.fill.change="variant" class="block w-full rounded-md border-0 py-1.15 pl-3 pr-10 text-slate-800 dark:bg-slate-200">
                 @foreach($this->product->variants as $variant)
                     <option value="{{ $variant->id }}">{{ $variant->size }} / {{ $variant->color }}</option>
                 @endforeach
             </select>
 
-            <x-button type="button">Add To Cart</x-button>
+            <x-input-error for="variant" class="mt-2" />
+
+            <x-button wire:click="addToCart" type="button">Add To Cart</x-button>
         </div>
     </div>
 </div>
