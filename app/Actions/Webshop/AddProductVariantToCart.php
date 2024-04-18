@@ -6,20 +6,16 @@ use App\Models\Cart;
 
 class AddProductVariantToCart
 {
-    public function add($variantId)
+    public function add($variantId): void
     {
-        if(auth()->guest())
-        {
-            $cart = Cart::firstOrCreate([
-                'session_id' => session()->getId()
-            ]);
-        }
+        $cart = match(auth()->guest()) {
+            true => Cart::firstOrCreate(['session_id' => session()->getId()]),
+            false => auth()->user()->cart ?: auth()->user()->cart()->create(),
+        };
 
-        if(auth()->user())
-        {
-            $cart =  auth()->user()->cart ?: auth()->user()->cart()->create();
-        }
-
-        dd($cart);
+        $cart->items()->create([
+            'product_variant_id' => $variantId,
+            'quantity' => 1,
+        ]);
     }
 }
