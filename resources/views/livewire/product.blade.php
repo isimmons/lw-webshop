@@ -1,13 +1,13 @@
 <div class="grid grid-cols-2 gap-10 py-12">
-    <div class="space-y-4">
+    <div class="space-y-4" x-data="{ image: '{{ $this->product->featured_image->path }}'  }">
         <div class="bg-white p-5 rounded-lg shadow dark:shadow-slate-200">
-            <img src="{{ $this->product->featured_image->path }}" alt="Picture of {{ $this->product->name }}">
+            <img x-bind:src="image" alt="Picture of {{ $this->product->name }}">
         </div>
 
         <div class="grid grid-cols-4 gap-4">
             @foreach($this->product->images as $image)
                 <div class="rounded bg-white p-2 shadow dark:shadow-slate-200">
-                    <img src="{{ $image->path }}" alt="Picture of {{ $this->product->name }}">
+                    <img @click="image =  '{{$image->path}}'" src="{{ $image->path }}" alt="Picture of {{ $this->product->name }}">
                 </div>
             @endforeach
         </div>
