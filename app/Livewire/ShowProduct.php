@@ -28,7 +28,7 @@ class ShowProduct extends Component
 
         Toaster::success('Product added to cart successfully!');
 
-        $this->dispatch('productAddedToCart');
+        $this->dispatch('product.added');
     }
 
     public function render(): View

@@ -9,7 +9,8 @@ use Livewire\Component;
 class NavigationCart extends Component
 {
     #[Computed]
-    #[On('productAddedToCart')]
+    #[On('product.added')]
+    #[On('product.deleted')]
     public function count()
     {
         return CartFactory::make()->items()->sum('quantity');
