@@ -16,6 +16,8 @@
                         {{ __('Home') }}
                     </x-nav-link>
                 </div>
+
+                @livewire('navigation-cart')
             </div>
 
             @auth

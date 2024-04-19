@@ -27,6 +27,8 @@ class ShowProduct extends Component
         $action->add(variantId: $this->variant);
 
         $this->banner('Product added to cart');
+
+        $this->dispatch('productAddedToCart');
     }
 
     public function render(): View
