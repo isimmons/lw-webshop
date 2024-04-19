@@ -6,8 +6,8 @@ use App\Actions\Webshop\AddProductVariantToCart;
 use Illuminate\Contracts\View\View;
 use Laravel\Jetstream\InteractsWithBanner;
 use Livewire\Component;
-use Livewire\Attributes\Computed;
 use App\Models\Product;
+use Masmerise\Toaster\Toaster;
 
 class ShowProduct extends Component
 {
@@ -26,7 +26,9 @@ class ShowProduct extends Component
 
         $action->add(variantId: $this->variant);
 
-        $this->banner('Product added to cart');
+//        $this->banner('Product added to cart');
+
+        Toaster::success('Product added to cart successfully!');
 
         $this->dispatch('productAddedToCart');
     }
