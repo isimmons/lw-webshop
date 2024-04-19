@@ -17,6 +17,23 @@ class ShowCart extends Component
         return CartFactory::make()->items()->with(['variant', 'product'])->get();
     }
 
+    public function increment($itemId): void
+    {
+        CartFactory::make()->items()->find($itemId)?->increment('quantity');
+        $this->dispatch('quantity.incremented');
+    }
+
+    public function decrement($itemId): void
+    {
+        $item = CartFactory::make()->items()->find($itemId);
+
+        if($item && $item->quantity > 1)
+        {
+            $item->decrement('quantity');
+            $this->dispatch('quantity.decremented');
+        }
+    }
+
     public function deleteItem($itemId): void
     {
         CartFactory::make()->items()->where('id', $itemId)->delete();
