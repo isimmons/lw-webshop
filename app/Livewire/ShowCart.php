@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Factories\CartFactory;
+use App\Models\Cart;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 use Livewire\Attributes\Computed;
@@ -10,6 +11,11 @@ use Livewire\Component;
 
 class ShowCart extends Component
 {
+    #[Computed]
+    public function cart(): Cart
+    {
+        return CartFactory::make();
+    }
 
     #[Computed]
     public function items(): Collection
