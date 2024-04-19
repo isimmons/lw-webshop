@@ -1,12 +1,12 @@
 <?php
 
-use App\Livewire\ShowProduct;
-use App\Livewire\StoreFront;
+use App\Livewire\{ StoreFront, ShowProduct, ShowCart };
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', StoreFront::class)->name('home');
 
 Route::get('/products/{product}', ShowProduct::class)->name('product.show');
+Route::get('/cart', ShowCart::class)->name('cart.show');
 
 //Route::middleware([
 //    'auth:sanctum',
