@@ -26,8 +26,6 @@ class ShowProduct extends Component
 
         $action->add(variantId: $this->variant);
 
-//        $this->banner('Product added to cart');
-
         Toaster::success('Product added to cart successfully!');
 
         $this->dispatch('productAddedToCart');
