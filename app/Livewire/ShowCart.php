@@ -2,10 +2,12 @@
 
 namespace App\Livewire;
 
+use App\Actions\Webshop\CreateStripeCheckoutSession;
 use App\Factories\CartFactory;
 use App\Models\Cart;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
+use Laravel\Cashier\Checkout;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
@@ -45,6 +47,11 @@ class ShowCart extends Component
         CartFactory::make()->items()->where('id', $itemId)->delete();
 
         $this->dispatch('product.deleted');
+    }
+
+    public function checkout(CreateStripeCheckoutSession $checkoutSession): Checkout
+    {
+        return $checkoutSession->createFromCart($this->cart);
     }
 
     public function render(): View
