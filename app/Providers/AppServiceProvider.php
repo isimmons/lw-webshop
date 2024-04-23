@@ -16,6 +16,7 @@ use Money\Formatter\IntlMoneyFormatter;
 use Money\Money;
 use NumberFormatter;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
