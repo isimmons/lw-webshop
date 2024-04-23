@@ -24,6 +24,8 @@ class CreateStripeCheckoutSession
                             'US', 'NL'
                         ]
                     ],
+                    'success_url' => route('checkout.status') . '?session_id={CHECKOUT_SESSION_ID}',
+                    'cancel_url' => route('cart.show'),
                     'metadata' => [
                         'user_id' => $cart->user->id,
                         'cart_id' => $cart->id,
