@@ -1,7 +1,9 @@
 <?php
 
+use App\Mail\AbandonedCartReminder;
 use App\Mail\OrderConfirmation;
 use App\Models\Order;
+use App\Models\User;
 use App\Livewire\{CheckoutStatus,
     Myorders,
     ShowOrder,
@@ -11,7 +13,8 @@ use App\Livewire\{CheckoutStatus,
 use Illuminate\Support\Facades\Route;
 
 Route::get('preview-email', function() {
-    return view('emails.order-confirmation');
+    $cart = User::first()->cart;
+    return new AbandonedCartReminder($cart);
 });
 
 Route::get('/', StoreFront::class)->name('home');
@@ -19,13 +22,6 @@ Route::get('/', StoreFront::class)->name('home');
 Route::get('/products/{product}', ShowProduct::class)->name('product.show');
 Route::get('/cart', ShowCart::class)->name('cart.show');
 
-
-
-Route::get('/preview-email', function(){
-    $order = Order::first();
-
-    return new OrderConfirmation($order);
-});
 
 Route::middleware([
     'auth:sanctum',

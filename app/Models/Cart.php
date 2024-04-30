@@ -14,7 +14,7 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['session_id'];
+    protected $fillable = ['session_id', 'updated_at'];
 
     protected function total(): Attribute
     {
