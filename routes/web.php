@@ -2,7 +2,12 @@
 
 use App\Mail\OrderConfirmation;
 use App\Models\Order;
-use App\Livewire\{CheckoutStatus, ShowOrder, StoreFront, ShowProduct, ShowCart};
+use App\Livewire\{CheckoutStatus,
+    Myorders,
+    ShowOrder,
+    StoreFront,
+    ShowProduct,
+    ShowCart};
 use Illuminate\Support\Facades\Route;
 
 Route::get('preview-email', function() {
@@ -30,4 +35,5 @@ Route::middleware([
     Route::get('/checkout-status', CheckoutStatus::class)->name('checkout.status');
 
     Route::get('/order/{orderId}', ShowOrder::class)->name('order.show');
+    Route::get('my-orders', MyOrders::class)->name('my.orders');
 });
