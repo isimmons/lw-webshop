@@ -14,8 +14,8 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['session_id', 'updated_at'];
-
+//    protected $fillable = ['session_id', 'updated_at'];
+    protected $guarded = [];
     protected function total(): Attribute
     {
         return Attribute::make(

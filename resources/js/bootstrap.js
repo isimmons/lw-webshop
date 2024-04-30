@@ -1,10 +1,10 @@
 import axios from 'axios';
-import Alpine from 'alpinejs'
+// import Alpine from 'alpinejs'
 
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-if( ! window.Alpine ) {
-    window.Alpine = Alpine
-    Alpine.start()
-}
+// if( ! window.Alpine ) {
+//     window.Alpine = Alpine
+//     Alpine.start()
+// }

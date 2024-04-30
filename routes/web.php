@@ -12,10 +12,10 @@ use App\Livewire\{CheckoutStatus,
     ShowCart};
 use Illuminate\Support\Facades\Route;
 
-Route::get('preview-email', function() {
-    $cart = User::first()->cart;
-    return new AbandonedCartReminder($cart);
-});
+//Route::get('preview-email', function() {
+//    $cart = User::first()->cart;
+//    return new AbandonedCartReminder($cart);
+//});
 
 Route::get('/', StoreFront::class)->name('home');
 

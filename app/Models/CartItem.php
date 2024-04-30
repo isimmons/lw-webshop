@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 class CartItem extends Model
 {
     use HasFactory;
+    protected $touches = ['cart'];
 
     protected $fillable = ['product_variant_id', 'quantity'];
 
@@ -24,6 +25,11 @@ class CartItem extends Model
             'product_variant_id',
             'product_id'
         );
+    }
+
+    public function cart(): BelongsTo
+    {
+        return $this->belongsTo(Cart::class);
     }
 
     public function variant(): BelongsTo
