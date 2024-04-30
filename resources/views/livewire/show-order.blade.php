@@ -1,3 +1,3 @@
-<div>
+<x-panel>
     hello {{ $this->order->id }}
-</div>
+</x-panel>
